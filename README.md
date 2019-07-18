@@ -56,14 +56,16 @@ Payload JSON
   "firmwareVersion": "string"
 }
 ```
-
+deviceId returned from Registration should be used in /api/Data payload
+sensorId should test with BA0849DF-6A72-42E9-93B0-7716299726BB
+until schema and registration allows for multiple sensors
 ```
 HTTP Verb : POST
 Path /api/Data
 Payload JSON
 {
   "deviceId": "56c60bf0-3535-44f7-aaa0-dbf6455913c5",
-  "sensorId": "c6dadd52-35ce-4262-b1a2-4ae68b8d8c05",
+  "sensorId": "BA0849DF-6A72-42E9-93B0-7716299726BB",
   "temperature": 10,
   "humidity": 20,
   "carbonMonoxideLevel": 110,
