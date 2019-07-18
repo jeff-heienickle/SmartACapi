@@ -41,6 +41,9 @@ https://smartac20190718103234.azurewebsites.net/identity/Account/Manage
 
 *Live API end points - recommend using Postman while running admin site to view SignalR Notification in realtime for /api/Post
 
+
+https://smartac20190718103234.azurewebsites.net/swagger/index.html
+
 https://smartac20190718103234.azurewebsites.net/api/Data
 https://smartac20190718103234.azurewebsites.net/api/Register
 
