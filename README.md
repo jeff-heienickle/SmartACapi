@@ -18,6 +18,7 @@ The site is a POC demo and simple coding patterns are used forgoing any clean ar
 ## Admin site
 * ToDo: Graph uses mock data, backing data could be loaded via ajax
 * ToDo: Admin invite and blocking users
+* Todo: Viewing sensor data by date ranges.
 
 https://smartac20190718103234.azurewebsites.net/
 
@@ -73,3 +74,5 @@ Payload JSON
   "status": "ok"
 }
 ```
+#Give more time:
+I would have defined User Stories and Acceptance Criteria to better manage expectations of the scope of work. When doing this type of POC work regularly, I would also prepare a POC template with some commonly requested features such as authentication, authorization, notification, and logging in a clean architecture so that I would not have to start from nothing.  Starting with a good template would allow me to send more time engaged with the customer on their domain specific requirements. I would also like to have a set of unit test cases to run atomically. Also, no time was devoted to performance or load considerations.  Many of the data access methods will fail under load. For example the Admin and Device lists will need support for paging to limit amount of data returned.
