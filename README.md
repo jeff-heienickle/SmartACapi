@@ -19,8 +19,28 @@ The site is a POC demo and simple coding patterns are used forgoing any clean ar
 * ToDo: Graph uses mock data, backing data could be loaded via ajax
 * ToDo: Admin invite and blocking users
 
+https://smartac20190718103234.azurewebsites.net/
+User: admin@smartac.com
+Password: Password#01
+
+*Main Pages
+https://smartac20190718103234.azurewebsites.net/Devices 
+https://smartac20190718103234.azurewebsites.net/Admin
+
+*Identity Management -limitation no email service setup for POC
+https://smartac20190718103234.azurewebsites.net/Identity/Account/Login
+https://smartac20190718103234.azurewebsites.net/Identity/Account/ForgotPassword
+https://smartac20190718103234.azurewebsites.net/identity/Account/Manage
+
+
 ## REST based Open API using JSON payloads
 * To Do: JWT bear tokens used for Authentication
+
+*Live API end points - recommend using Postman while running admin site to view SignalR Notification in realtime for /api/Post
+
+https://smartac20190718103234.azurewebsites.net/api/Data
+https://smartac20190718103234.azurewebsites.net/api/Register
+
 ```
 HTTP Verb : POST
 Path /api/Data
