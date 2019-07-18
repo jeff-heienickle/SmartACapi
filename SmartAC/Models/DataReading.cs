@@ -20,5 +20,7 @@ namespace SmartAC.Models
         public double CarbonMonoxideLevel { get; set; }
 
         public string Status { get; set; }
+
+        public DateTime ReadingDate { get; set; }
     }
 }

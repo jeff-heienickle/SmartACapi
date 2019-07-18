@@ -1,0 +1,37 @@
+﻿@model SmartAC.Models.Device
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Health Notification</h1>
+
+<div>
+    <h4>Device</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.SerialNumber)
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.SerialNumber)
+        </dd>
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.RegistrationDate)
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.RegistrationDate)
+        </dd>
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.FirmwareVersion)
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.FirmwareVersion)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-controller="DataReadings" asp-action="Index" asp-route-id="@Model.DeviceId">View Data</a>
+
+</div>
+

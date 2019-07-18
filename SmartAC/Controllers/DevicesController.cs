@@ -64,6 +64,24 @@ namespace SmartAC.Controllers
             return View(device);
         }
 
+        // GET: Devices/Details/5
+        public async Task<IActionResult> Notify(Guid? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var device = await _context.Devices
+                .FirstOrDefaultAsync(m => m.DeviceId == id);
+            if (device == null)
+            {
+                return NotFound();
+            }
+
+            return PartialView(device);
+        }
+
         // GET: Devices/Create
         public IActionResult Create()
         {

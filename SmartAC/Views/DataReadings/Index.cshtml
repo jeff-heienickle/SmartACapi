@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<b>Sensor 1 Data Readings</b>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -13,19 +13,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.DeviceId)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Temperature)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Humidity)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CarbonMonoxideLevel)
+                CO PPM
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReadingDate)
             </th>
             <th></th>
         </tr>
@@ -33,9 +33,6 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeviceId)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Temperature)
             </td>
@@ -47,6 +44,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReadingDate)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

@@ -31,6 +31,8 @@ namespace SmartAC.Migrations
 
                     b.Property<double>("Humidity");
 
+                    b.Property<DateTime>("ReadingDate");
+
                     b.Property<Guid>("SensorId");
 
                     b.Property<string>("Status")

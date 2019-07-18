@@ -43,10 +43,7 @@
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Devices" asp-action="Index">Devices</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Users</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Index">Users</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" href="/swagger">API Documentation</a>
@@ -69,12 +66,28 @@
             if (User.Identity.IsAuthenticated)
             {
 
-        <div class="alert alert-success alert-dismissable">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <a class="nav-link text-dark" href="/Devices/Details/0c61479d-1215-4a52-2bba-08d70aea87a4">Details</a>
-            
-            <div id="messagesList"></div>
-        </div>
+                <!--     <div class="alert alert-success alert-dismissable">
+                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                     <a class="nav-link text-dark" href="/Devices/Details/0c61479d-1215-4a52-2bba-08d70aea87a4">Details</a>
+
+                     <div id="messagesList"></div>
+                 </div>
+                         -->
+
+
+                <div class="alert alert-danger modal fade" id="expenseFormModel" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 id="title" class="modal-title"></h3>
+                                <a href="#" class="close" data-dismiss="modal">&times;</a>
+
+                            </div>
+                            <div class="modal-body" id="expenseFormModelDiv">
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             }
         }

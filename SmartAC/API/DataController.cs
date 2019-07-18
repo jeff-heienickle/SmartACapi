@@ -27,6 +27,7 @@ namespace SmartAC.Controllers
 
         // GET: api/Data
         [HttpGet]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<ActionResult<IEnumerable<DataReading>>> GetDataReadings()
         {
             return await _context.DataReadings.ToListAsync();
@@ -34,6 +35,7 @@ namespace SmartAC.Controllers
 
         // GET: api/Data/5
         [HttpGet("{id}")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<ActionResult<DataReading>> GetDataReading(long id)
         {
             var dataReading = await _context.DataReadings.FindAsync(id);
@@ -48,6 +50,7 @@ namespace SmartAC.Controllers
 
         // PUT: api/Data/5
         [HttpPut("{id}")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<IActionResult> PutDataReading(long id, DataReading dataReading)
         {
             if (id != dataReading.Id)
@@ -80,7 +83,16 @@ namespace SmartAC.Controllers
         [HttpPost]
         public async Task<ActionResult<DataReading>> PostDataReading(DataReading dataReading)
         {
-            await _chatHubContext.Clients.All.BroadcastMessage(dataReading.SensorId.ToString(), dataReading.Status);
+            dataReading.ReadingDate = DateTime.UtcNow;
+            if (dataReading.CarbonMonoxideLevel > 9)
+            {
+                dataReading.Status = "monoxide_alert";
+            }
+            if (dataReading.CarbonMonoxideLevel > 9 || dataReading.Status.Contains("needs_service") || dataReading.Status.Contains("needs_new_filter") || dataReading.Status.Contains("gas_leak"))
+            {
+                await _chatHubContext.Clients.All.BroadcastMessage(dataReading.DeviceId.ToString(), dataReading.SensorId.ToString(), dataReading.Status);
+            }
+
             _context.DataReadings.Add(dataReading);
             await _context.SaveChangesAsync();
 
@@ -89,6 +101,7 @@ namespace SmartAC.Controllers
 
         // DELETE: api/Data/5
         [HttpDelete("{id}")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<ActionResult<DataReading>> DeleteDataReading(long id)
         {
             var dataReading = await _context.DataReadings.FindAsync(id);

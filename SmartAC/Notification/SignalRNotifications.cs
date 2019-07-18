@@ -5,9 +5,9 @@ namespace SmartAC.Notification
 {
     public class ChatHub : Hub<ITypedNotificationHub>
     {
-        public void Send(string name, string message)
+        public void Send(string deviceId, string sensorId,string message)
         {
-            Clients.All.BroadcastMessage(name, message);
+            Clients.All.BroadcastMessage(deviceId, sensorId, message);
         }
     }
 }

@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SmartAC.Notification;
 using Swashbuckle.AspNetCore.Swagger;
 using SmartAC.Authentication;
+using SmartAC.Models;
 
 namespace SmartAC
 {

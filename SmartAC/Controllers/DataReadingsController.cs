@@ -73,7 +73,7 @@ namespace SmartAC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DeviceId,SensorId,Temperature,Humidity,CarbonMonoxideLevel,Status")] DataReading dataReading)
+        public async Task<IActionResult> Create([Bind("Id,DeviceId,SensorId,Temperature,Humidity,CarbonMonoxideLevel,Status,ReadingDate")] DataReading dataReading)
         {
             if (ModelState.IsValid)
             {
@@ -105,7 +105,7 @@ namespace SmartAC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Id,DeviceId,SensorId,Temperature,Humidity,CarbonMonoxideLevel,Status")] DataReading dataReading)
+        public async Task<IActionResult> Edit(long id, [Bind("Id,DeviceId,SensorId,Temperature,Humidity,CarbonMonoxideLevel,Status,ReadingDate")] DataReading dataReading)
         {
             if (id != dataReading.Id)
             {

@@ -23,6 +23,7 @@ namespace SmartAC.Controllers
 
         // GET: api/Register
         [HttpGet]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<ActionResult<IEnumerable<Device>>> GetDevices()
         {
             return await _context.Devices.ToListAsync();
@@ -30,6 +31,7 @@ namespace SmartAC.Controllers
 
         // GET: api/Register/5
         [HttpGet("{id}")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<ActionResult<Device>> GetDevice(Guid id)
         {
             var device = await _context.Devices.FindAsync(id);
@@ -44,6 +46,7 @@ namespace SmartAC.Controllers
 
         // PUT: api/Register/5
         [HttpPut("{id}")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<IActionResult> PutDevice(Guid id, Device device)
         {
             if (id != device.DeviceId)
@@ -85,6 +88,7 @@ namespace SmartAC.Controllers
 
         // DELETE: api/Register/5
         [HttpDelete("{id}")]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<ActionResult<Device>> DeleteDevice(Guid id)
         {
             var device = await _context.Devices.FindAsync(id);
