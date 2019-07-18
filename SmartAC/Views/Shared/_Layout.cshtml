@@ -1,7 +1,9 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <meta http-equiv="Content-Language" content="en">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SmartAC</title>
 
@@ -13,7 +15,7 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
               crossorigin="anonymous"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
     </environment>
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -21,6 +23,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
+
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SmartAC</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -32,15 +35,50 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+
+                        @{
+                            if (User.Identity.IsAuthenticated)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Devices" asp-action="Index">Devices</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Users</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="/swagger">API Documentation</a>
+                                </li>
+                            }
+                        }
+
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
     <div class="container">
+        <style>
+            .alert {
+                display: none;
+            }
+        </style>
+        @{
+            if (User.Identity.IsAuthenticated)
+            {
+
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <a class="nav-link text-dark" href="/Devices/Details/0c61479d-1215-4a52-2bba-08d70aea87a4">Details</a>
+            
+            <div id="messagesList"></div>
+        </div>
+
+            }
+        }
+
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
             @RenderBody()
@@ -71,6 +109,9 @@
                 integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
         </script>
     </environment>
+
+    <script src="~/lib/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/notification.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)

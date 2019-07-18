@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SmartAC.Models.Device>
+
+@{
+    ViewData["Title"] = "Devices";
+}
+
+<h1>Devices</h1>
+<form asp-controller="Devices" asp-action="Index" method="post">
+    <p>
+        Search by SerialNumber: <input type="text" name="SearchString">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SerialNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegistrationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirmwareVersion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SerialNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegistrationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirmwareVersion)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.DeviceId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.DeviceId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.DeviceId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
